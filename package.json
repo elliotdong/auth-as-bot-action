@@ -5,9 +5,11 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "build": "pnpx unbuild"
+    "build": "npx unbuild"
   },
-  "files": ["./dist"],
+  "files": [
+    "./dist"
+  ],
   "engines": {
     "node": ">= 14"
   },
@@ -23,5 +25,5 @@
   },
   "publishConfig": {
     "access": "public"
-  }  
+  }
 }
