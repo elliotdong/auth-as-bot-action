@@ -1,0 +1,27 @@
+{
+  "name": "@elliotdong/auth-as-bot-action",
+  "version": "1.0.0",
+  "main": "./dist/index.cjs",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpx unbuild"
+  },
+  "files": ["./dist"],
+  "engines": {
+    "node": ">= 14"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.0",
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "jsonwebtoken": "^9.0.0",
+    "ofetch": "^1.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }  
+}

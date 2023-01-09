@@ -1,0 +1,12 @@
+name: Auth-as-Private-Bot
+description: A GitHub action to get PAT as a Github APP Bot
+runs:
+  using: "node16"
+  main: "dist/index.cjs"
+inputs:
+  exportName:
+    description: "Export name to Process Env, default is GITHUB_TOKEN"
+    required: false
+branding:
+  icon: "package"
+  color: "blue"
