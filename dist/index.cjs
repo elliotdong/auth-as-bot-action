@@ -58,7 +58,8 @@ const core__namespace = /*#__PURE__*/_interopNamespaceDefault(core);
     core__namespace.setFailed("Get Access Token from Github Failed, res: " + JSON.stringify(accessTokenResp));
     return;
   }
-  process.env[exportVariable] = githubToken;
+  core__namespace.setSecret(githubToken);
+  core__namespace.exportVariable(exportVariable, githubToken);
 })().catch((err) => {
   console.error(err);
   core__namespace.setFailed(err.message);

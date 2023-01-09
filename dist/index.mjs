@@ -43,7 +43,8 @@ import { ofetch } from 'ofetch';
     core.setFailed("Get Access Token from Github Failed, res: " + JSON.stringify(accessTokenResp));
     return;
   }
-  process.env[exportVariable] = githubToken;
+  core.setSecret(githubToken);
+  core.exportVariable(exportVariable, githubToken);
 })().catch((err) => {
   console.error(err);
   core.setFailed(err.message);

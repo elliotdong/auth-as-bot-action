@@ -57,8 +57,10 @@ import { ofetch } from 'ofetch'
     return;
   }
 
-  // core.exportVariable('AAB_TOKEN', githubToken)
-  process.env[exportVariable] = githubToken;
+  core.setSecret(githubToken)
+  core.exportVariable(exportVariable, githubToken)
+  
+  // process.env[exportVariable] = githubToken;
 })().catch((err) => {
   console.error(err);
   core.setFailed(err.message);
