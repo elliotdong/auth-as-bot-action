@@ -4,7 +4,7 @@ import { ofetch } from 'ofetch'
 
 (async () => {
 
-  const exportVariable = core.getInput('exportName') || 'GITHUB_TOKEN'
+  const exportVariable = process.env.EXPORT_NAME || 'GITHUB_TOKEN'
   const githubAppPem = process.env.GITHUB_APP_PEM;
 
   if (!githubAppPem) {
