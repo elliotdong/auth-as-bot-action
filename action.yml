@@ -2,7 +2,7 @@ name: Auth-as-Private-Bot
 description: A GitHub action to get PAT as a Github APP Bot
 runs:
   using: "node16"
-  main: "npx @elliotdong/auth-as-bot-action"
+  run: "npx @elliotdong/auth-as-bot-action"
 inputs:
   exportName:
     description: "Export name to Process Env, default is GITHUB_TOKEN"
