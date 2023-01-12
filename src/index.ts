@@ -8,14 +8,14 @@ import { ofetch } from 'ofetch'
   const githubAppPem = process.env.GITHUB_APP_PEM;
 
   if (!githubAppPem) {
-    core.setFailed("Please add the GITHUB_APP_PEM to the auth-as-bot action");
+    core.setFailed("Please add the GITHUB_APP_PEM to the env");
     return;
   }
 
   const githubAppId = process.env.GITHUB_APP_ID;
 
   if(!githubAppId) {
-    core.setFailed("Please add the GITHUB_APP_ID to the auth-as-bot action");
+    core.setFailed("Please add the GITHUB_APP_ID to the env");
     return;
   }
 

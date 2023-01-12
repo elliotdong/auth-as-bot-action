@@ -1,6 +1,6 @@
 {
   "name": "@elliotdong/auth-as-bot-action",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "main": "./dist/index.cjs",
   "type": "module",
   "license": "MIT",
@@ -9,7 +9,7 @@
     "build": "unbuild"
   },
   "files": [
-    "./dist",
+    "dist",
     "./cli.mjs"
   ],
   "engines": {
