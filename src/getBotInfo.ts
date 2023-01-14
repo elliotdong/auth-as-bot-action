@@ -25,33 +25,41 @@ export const getBotInfo = async (
       algorithm: "RS256",
     }
   );
+  const installationsResp = await ofetch(
+    "https://api.github.com/app/installations",
+    {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    }
+  );
+
+  if (
+    !installationsResp ||
+    !Array.isArray(installationsResp) ||
+    installationsResp.length === 0
+  ) {
+    throw (
+      "May be you haven't install the github app in your account, github api response: " +
+      JSON.stringify(installationsResp)
+    );
+  }
+
+  let installAppId = '0';
 
   if (!accountId) {
-    const installationsResp = await ofetch(
-      "https://api.github.com/app/installations",
-      {
-        headers: {
-          Authorization: `Bearer ${jwtToken}`,
-        },
-      }
-    );
-
-    if (
-      !installationsResp ||
-      !Array.isArray(installationsResp) ||
-      installationsResp.length === 0
-    ) {
-      throw (
-        "May be you haven't install the github app in your account, github api response: " +
-        JSON.stringify(installationsResp)
-      );
+    installAppId = installationsResp[0].id as string;
+  } else {
+    const foundInstaller = installationsResp.find((installer) => installer.target_id == accountId);
+    if(!foundInstaller) {
+      throw 'Noting installer can be found in accountId, github api response:' + JSON.stringify(installationsResp);
     }
-    accountId = installationsResp[0].id as string;
+    installAppId = foundInstaller.id;
   }
 
   const githubToken = (
     await ofetch(
-      `https://api.github.com/app/installations/${accountId}/access_tokens`,
+      `https://api.github.com/app/installations/${installAppId}/access_tokens`,
       {
         method: "POST",
         headers: {
@@ -69,7 +77,7 @@ export const getBotInfo = async (
         Authorization: `Bearer ${jwtToken}`,
       },
     }
-  )).name;
+  )).slug;
   return {
     token: githubToken,
     bot: {
