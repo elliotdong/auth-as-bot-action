@@ -45,6 +45,7 @@ jobs:
 +         GITHUB_APP_PEM: ${{ secrets.ELLIOT_GITHUB_PEM }}
 +         GITHUB_APP_ID: ${{ secrets.ELLIOT_APP_ID }}
 +         EXPORT_NAME: GITHUB_TOKEN
++         ACCOUNT_ID: ${{ github.repository_owner_id }}
 
       - name: Create Release Pull Request or Publish
         id: changesets
